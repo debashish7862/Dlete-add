@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add and delete</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My shopping list</h1>
+      <form>
+       Enter a new item: <input type="text" name="text" id="txt" required> 
+        <button type="submit" class="btn-list">Add item</button>
+      </form>
+      <div class="container" >
+        <ul>
+            <li>dev<span>Delete</span></li>
+            <li>dev<span>Delete</span></li>
+            <li>dev<span>Delete</span></li>
+            
+        </ul>
+      </div>
+
+  <script>
+    const inputText=document.querySelector('#txt');
+   const mybutton=document.querySelector('.btn-list');
+    const list=document.querySelector('.container ul');
+    mybutton.addEventListener('click', (e)=>{
+     if(inputText.value != ""){
+        e.preventDefault();
+        const myli=document.createElement('li')
+        myli.innerHTML=inputText.value;
+        list.appendChild(myli);
+         const myspan=document.createElement('span');
+         myspan.innerHTML='Delete';
+         myli.appendChild(myspan);
+
+     }
+     const close=document.querySelectorAll('span');
+     for(let i=0; i<close.length;i++){
+        close[i].addEventListener('click',(e)=>{
+            close[i].parentElement.style.display='none';
+        })
+     }
+     inputText.value= "";
+
+    });
+
+
+  </script>
+    
+</body>
+</html>
